@@ -13,11 +13,9 @@
     "typescript": "^4.6.2"
   },
   "scripts": {
-    "build": "tsc",
-    "prestart": "ls -a && cd build && ls -a && cd ..",
+    "build": "tsc && cd frontend && yarn && yarn run build",
     "start": "node build/index",
-    "dev": "concurrently --names 'Server,Frontend' --prefix-colors 'blue,green' --kill-others 'nodemon src/index.ts' 'cd frontend && npx react-scripts start'",
-    "heroku-postbuild": "cd frontend && yarn && yarn run build"
+    "dev": "concurrently --names 'Server,Frontend' --prefix-colors 'blue,green' --kill-others 'nodemon src/index.ts' 'cd frontend && npx react-scripts start'"
   },
   "nodemonConfig": {
     "ignore": [
