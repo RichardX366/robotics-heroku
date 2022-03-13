@@ -14,6 +14,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "prestart": "ls -a && cd build && ls -a && cd ..",
     "start": "node build/index",
     "dev": "concurrently --names 'Server,Frontend' --prefix-colors 'blue,green' --kill-others 'nodemon src/index.ts' 'cd frontend && npx react-scripts start'",
     "heroku-postbuild": "cd frontend && yarn && yarn run build"
