@@ -1,0 +1,26 @@
+{
+  "name": "robotics-heroku",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/RichardX366/robotics-heroku.git",
+  "author": "Richard Xiong <richardx366@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1",
+    "typescript": "^4.6.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index",
+    "dev": "concurrently --names 'Server,Frontend' --prefix-colors 'blue,green' --kill-others 'nodemon src/index.ts' 'cd frontend && npx react-scripts start'",
+    "heroku-postbuild": "cd frontend && yarn && yarn run build"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "frontend/*"
+    ]
+  }
+}
