@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { createState } from '@hookstate/core';
 import { io } from 'socket.io-client';
 
-const socket = io();
-const hookMap: { [key: string]: (v: any) => void } = {};
+export const socket = io();
+socket.on('connect', () => {
+  socket.emit('init', {});
+});
 
-socket.on('test', (v) => hookMap?.test(v));
+export const globalConfiguration = createState('');
+socket.on('configuration', (v) => globalConfiguration.set(v));
 
-export const useTest = () => {
-  const [state, setState] = useState('');
-  hookMap.test = setState;
-  return state;
-};
+export const globalStepperLoading = createState(false);
+socket.on('stepperLoading', (v) => globalStepperLoading.set(v));

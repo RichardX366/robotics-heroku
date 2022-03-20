@@ -2,9 +2,14 @@ import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import handleSocket from './handleSocket';
+import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
+
 const app = express();
+app.use(cors());
 const server = createServer(app);
-const io = new Server(server);
+export const io = new Server(server);
 
 let base = __dirname.split('/');
 base.pop();
