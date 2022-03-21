@@ -183,7 +183,7 @@ const Input: React.FC<InputProps> = ({
             },
             error
               ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500'
-              : 'focus:ring-THEME-500 focus:border-THEME-500',
+              : 'focus:ring-cyan-500 focus:border-cyan-500',
             'shadow-sm block w-full sm:text-sm border-gray-300 rounded-md',
           )}
           placeholder={placeholder}

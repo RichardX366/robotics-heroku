@@ -32,13 +32,13 @@ const SingleDropdown: React.FC<SingleDropdownProps> = ({
             {label}
             <span className='text-red-500'>{required && ' *'}</span>
           </Listbox.Label>
-          <Listbox.Button className='relative w-full py-2 pl-3 pr-10 text-left bg-white border border-gray-300 rounded-md shadow-sm cursor-default focus:outline-none focus:ring-1 focus:ring-THEME-500 focus:border-THEME-500 sm:text-sm'>
+          <Listbox.Button className='relative w-full py-2 pl-3 pr-10 text-left bg-white border border-gray-300 rounded-md shadow-sm cursor-default focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm'>
             <div className='flex items-center'>
               {showStatus && (
                 <span
                   aria-label={selected?.active ? 'Online' : 'Offline'}
                   className={classNames(
-                    selected?.active ? 'bg-THEME-400' : 'bg-gray-200',
+                    selected?.active ? 'bg-cyan-400' : 'bg-gray-200',
                     'flex-shrink-0 inline-block h-2 w-2 rounded-full mr-3',
                   )}
                 />
@@ -69,10 +69,10 @@ const SingleDropdown: React.FC<SingleDropdownProps> = ({
                     className={({ active }) =>
                       classNames(
                         'flex items-center select-none relative py-2 pl-3 pr-9',
-                        { 'bg-THEME-100': active },
+                        { 'bg-cyan-100': active },
                         item.disabled
                           ? 'bg-gray-50 cursor-not-allowed text-gray-500'
-                          : 'hover:bg-THEME-100 cursor-pointer text-gray-900',
+                          : 'hover:bg-cyan-100 cursor-pointer text-gray-900',
                       )
                     }
                     disabled={item.disabled}
@@ -81,7 +81,7 @@ const SingleDropdown: React.FC<SingleDropdownProps> = ({
                       {showStatus && (
                         <span
                           className={classNames(
-                            item.active ? 'bg-THEME-400' : 'bg-gray-200',
+                            item.active ? 'bg-cyan-400' : 'bg-gray-200',
                             'flex-shrink-0 inline-block h-2 w-2 rounded-full mr-3',
                           )}
                           aria-hidden='true'
@@ -98,7 +98,7 @@ const SingleDropdown: React.FC<SingleDropdownProps> = ({
                       {isSelected && (
                         <span
                           className={classNames(
-                            isSelected ? 'text-THEME-600' : 'text-white',
+                            isSelected ? 'text-cyan-600' : 'text-white',
                             'absolute inset-y-0 right-0 flex items-center pr-4 group-hover:text-white',
                           )}
                         >

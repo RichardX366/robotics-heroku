@@ -12,7 +12,7 @@ const Spinner: React.FC<SpinnerProps> = ({ color = 'theme', size = 'h-5' }) => (
       'text-white': color === 'light',
       'text-gray-900': color === 'dark',
       'text-green-500': color === 'green',
-      'text-THEME-500': color === 'theme',
+      'text-cyan-500': color === 'theme',
     })}
     xmlns='http://www.w3.org/2000/svg'
     fill='none'

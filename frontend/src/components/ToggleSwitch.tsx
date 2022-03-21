@@ -12,7 +12,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ checked, onChange }) => (
     checked={checked}
     onChange={onChange}
     className={classNames(
-      checked ? 'bg-THEME-500' : 'bg-gray-400',
+      checked ? 'bg-cyan-500' : 'bg-gray-400',
       'relative inline-flex flex-shrink-0 h-7 w-14 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75',
     )}
   >
