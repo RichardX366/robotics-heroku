@@ -32,7 +32,7 @@ export const userStepper = (socket: Socket) => {
   socket.on('pins', (pinsString: string) => {
     try {
       const pinsNum = parseInt(pinsString);
-      if (!isFinite(pinsNum) && pinsNum.toString().length === 8)
+      if (!isFinite(pinsNum) && pinsNum.toString().length === 4)
         throw `Invalid data: ${pinsString}`;
       setStepperLoading(true);
       setPins(pinsString);
