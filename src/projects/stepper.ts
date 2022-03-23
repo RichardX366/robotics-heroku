@@ -29,13 +29,13 @@ export const userStepper = (socket: Socket) => {
       console.error(e);
     }
   });
-  socket.on('pins', (pins) => {
+  socket.on('pins', (pinsString: string) => {
     try {
-      pins = parseInt(pins);
-      if (!isFinite(pins) || pins < 2000 || pins > 9876)
-        throw `Invalid data: ${pins}`;
+      const pinsNum = parseInt(pinsString);
+      if (!isFinite(pinsNum) && pinsNum.toString().length === 8)
+        throw `Invalid data: ${pinsString}`;
       setStepperLoading(true);
-      setPins(pins.toString());
+      setPins(pinsString);
     } catch (e) {
       console.error(e);
     }
