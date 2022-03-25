@@ -2,29 +2,60 @@ import { useHookstate } from '@hookstate/core';
 import React from 'react';
 import StepperPage from './pages/Stepper';
 import { globalConfiguration } from './socket';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Layout from './pages/Layout';
+import { Link } from 'react-router-dom';
+import CNCModelPage from './pages/CNCModel';
 
 const App: React.FC = () => {
   const configuration = useHookstate(globalConfiguration);
-  if (configuration.value === 'stepper') return <StepperPage />;
-  else
-    return (
-      <main
-        className='min-h-full bg-cover bg-center'
-        style={{
-          backgroundImage:
-            'url("https://images.unsplash.com/photo-1545972154-9bb223aac798?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3050&q=80&exp=8&con=-15&sat=-75")',
-        }}
-      >
-        <div className='max-w-7xl mx-auto px-4 text-center sm:px-6 lg:px-8 py-28'>
-          <h1 className='mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl'>
-            There are currently no robotics projects running.
-          </h1>
-          <h1 className='mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl'>
-            Check again later!
-          </h1>
-        </div>
-      </main>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path='/'
+          element={(() => {
+            switch (configuration.value) {
+              case 'stepper':
+                return <StepperPage />;
+              default:
+                return (
+                  <Layout>
+                    <div className='flex flex-col items-center gap-2 text-lg'>
+                      <h1 className='text-3xl'>
+                        There are currently no projects actively running
+                      </h1>
+                      Feel free to check in later or check out an offline
+                      project at the top
+                    </div>
+                  </Layout>
+                );
+            }
+          })()}
+        />
+        <Route path='/cncModel' element={<CNCModelPage />} />
+        <Route
+          path='*'
+          element={
+            <Layout>
+              <div className='flex flex-col items-center gap-2 text-lg'>
+                <h1 className='text-3xl'>
+                  The page you are looking for does not exist
+                </h1>
+                <p>
+                  Click{' '}
+                  <Link to='/' className='underline'>
+                    here
+                  </Link>{' '}
+                  to be redirected to the homepage
+                </p>
+              </div>
+            </Layout>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
