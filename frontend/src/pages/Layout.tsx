@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../components/logo.png';
+import Notification from '../components/Notification';
 
 const links = [
   {
@@ -30,6 +31,7 @@ const links = [
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
+      <Notification />
       <div className='w-full absolute top-0 inset-x-0 bg-gray-800 text-white h-16 flex justify-between'>
         <Link to='/'>
           <div className='flex items-center text-2xl'>
@@ -39,7 +41,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </Link>
         <div className='flex gap-4 justify-end items-center mr-4 text-xl'>
           {links.map(({ component: Component, title, to }) => (
-            <Component to={to} className='hover:text-gray-200'>
+            <Component to={to} className='hover:text-gray-200' key={title}>
               {title}
             </Component>
           ))}

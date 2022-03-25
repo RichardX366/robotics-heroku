@@ -14,26 +14,35 @@ const App: React.FC = () => {
       <Routes>
         <Route
           path='/'
-          element={(() => {
-            switch (configuration.value) {
-              case 'stepper':
-                return <StepperPage />;
-              default:
-                return (
-                  <Layout>
-                    <div className='flex flex-col items-center gap-2 text-lg'>
-                      <h1 className='text-3xl'>
-                        There are currently no projects actively running
-                      </h1>
-                      Feel free to check in later or check out an offline
-                      project at the top
-                    </div>
-                  </Layout>
-                );
-            }
-          })()}
+          element={
+            <Layout>
+              {(() => {
+                switch (configuration.value) {
+                  case 'stepper':
+                    return <StepperPage />;
+                  default:
+                    return (
+                      <div className='flex flex-col items-center gap-2 text-lg'>
+                        <h1 className='text-3xl'>
+                          There are currently no projects actively running
+                        </h1>
+                        Feel free to check in later or check out an offline
+                        project at the top
+                      </div>
+                    );
+                }
+              })()}
+            </Layout>
+          }
         />
-        <Route path='/cncModel' element={<CNCModelPage />} />
+        <Route
+          path='/cncModel'
+          element={
+            <Layout>
+              <CNCModelPage />
+            </Layout>
+          }
+        />
         <Route
           path='*'
           element={

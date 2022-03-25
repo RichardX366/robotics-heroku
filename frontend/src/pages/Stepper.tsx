@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Layout from './Layout';
 import Input from '../components/Input';
 import { socket, globalStepperLoading, globalPins } from '../socket';
-import Notification, { error } from '../components/Notification';
+import { error } from '../components/Notification';
 import { useHookstate } from '@hookstate/core';
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -30,8 +29,7 @@ const StepperPage: React.FC = () => {
     }
   }, [finalTranscript, resetTranscript]);
   return (
-    <Layout>
-      <Notification />
+    <>
       <Input
         value={pins.value}
         onChange={pins.set}
@@ -77,7 +75,7 @@ const StepperPage: React.FC = () => {
           </button>
         </div>
       ) : null}
-    </Layout>
+    </>
   );
 };
 
