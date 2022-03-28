@@ -1,13 +1,5 @@
 import { createState } from '@hookstate/core';
-import { io } from 'socket.io-client';
-
-export const socket = io();
-socket.on('connect', () => {
-  socket.emit('init', {});
-});
-
-export const globalConfiguration = createState('');
-socket.on('configuration', (v) => globalConfiguration.set(v));
+import { socket } from '.';
 
 export const globalStepperLoading = createState(false);
 socket.on('stepperLoading', (v) => globalStepperLoading.set(v));

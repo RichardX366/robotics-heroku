@@ -21,30 +21,35 @@ export const userStepper = (socket: Socket) => {
   socket.emit('pins', pins);
   socket.on('step', (steps) => {
     try {
+      if (stepperLoading) throw 'Stepper is doing something';
       steps = parseInt(steps);
       if (!isFinite(steps)) throw `Invalid data: ${steps}`;
       io.to('users').emit('stepperLoading', true);
       io.to('pi').emit('step', steps.toString());
     } catch (e) {
-      console.error(e);
+      console.trace(e);
     }
   });
   socket.on('pins', (pinsString: string) => {
     try {
+      if (stepperLoading) throw 'Stepper is doing something';
       const pinsNum = parseInt(pinsString);
       if (!isFinite(pinsNum) && pinsNum.toString().length === 4)
         throw `Invalid data: ${pinsString}`;
       setStepperLoading(true);
       setPins(pinsString);
     } catch (e) {
-      console.error(e);
+      console.trace(e);
     }
   });
 };
 
 export const userStepperUnSubscribe = (clients: Clients) => {
+  stepperLoading = false;
+  pins = '5342';
   Object.values(clients).forEach((socket) => {
     socket.removeAllListeners('step');
+    socket.removeAllListeners('stepperLoading');
   });
 };
 

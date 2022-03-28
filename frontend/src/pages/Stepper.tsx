@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Input from '../components/Input';
-import { socket, globalStepperLoading, globalPins } from '../socket';
+import { socket } from '../socket';
+import { globalStepperLoading, globalPins } from '../socket/stepper';
 import { error } from '../components/Notification';
 import { useHookstate } from '@hookstate/core';
 import SpeechRecognition, {

@@ -60,7 +60,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
       </div>
       <div className='bg-gradient-to-br from-cyan-500 to-blue-500 h-full overflow-y-scroll py-12 sm:py-24 px-12 sm:px-32'>
-        <div className='mt-16 bg-white p-5 rounded-lg flex flex-col gap-4'>
+        <div className='mt-16 bg-white p-5 rounded-lg grid gap-4'>
           {children}
         </div>
       </div>

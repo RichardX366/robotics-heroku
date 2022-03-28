@@ -5,7 +5,8 @@ import { globalConfiguration } from './socket';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Layout from './pages/Layout';
 import { Link } from 'react-router-dom';
-import CNCModelPage from './pages/CNCModel';
+import CNCModelPage from './pages/CardboardCNCModel';
+import CardboardCNCTest from './pages/CardboardCNCTest';
 
 const App: React.FC = () => {
   const configuration = useHookstate(globalConfiguration);
@@ -20,6 +21,8 @@ const App: React.FC = () => {
                 switch (configuration.value) {
                   case 'stepper':
                     return <StepperPage />;
+                  case 'cardboardCNCTest':
+                    return <CardboardCNCTest />;
                   default:
                     return (
                       <div className='flex flex-col items-center gap-2 text-lg'>
