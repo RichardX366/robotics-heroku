@@ -22,7 +22,10 @@ const StepperPage: React.FC = () => {
 
   useEffect(() => {
     if (finalTranscript) {
-      const steps = parseInt(finalTranscript.replaceAll(' ', ''));
+      console.log(finalTranscript);
+      const steps = parseInt(
+        finalTranscript.replaceAll('thousand', '000').replaceAll(' ', ''),
+      );
       if (isFinite(steps)) {
         socket.emit('step', steps);
       }
